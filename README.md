@@ -14,7 +14,7 @@ Then, create different config files for all the different types of altcoin algor
 - x11.tcl
 - x13.tcl
 
-I use this script, and just change all the settings accordingly: https://bitcointalk.org/index.php
+I use this script, and just change all the settings accordingly: https://bitcointalk.org/index.php?topic=353436.0
 
 Finally, setup a *root* cronjob to run this script. I have it run every 20 minutes.
 
