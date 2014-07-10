@@ -36,11 +36,18 @@ name=${types[$index]}
 echo $name
 timestamp=`date +'%b %d %H:%M:%S'`
 
-if `ps aux | grep -v 'grep' | grep -v -i 'screen' | grep -q $name`;
+if [[ $name == 'x11' ]]
+    then
+        search_string='kernel=x11';
+else
+        search_string=$name;
+fi
+
+if `ps aux | grep -v 'grep' | grep -v -i 'screen' | grep -q $search_string`;
     then
         echo $timestamp 'Woot! mining the most profitable coins...' >> $rootdir/cgmon.log;
 else
-        echo $timestamp ' Not mining most profitable coin! ' $name >> $rootdir/cgmon.log;
+        echo $timestamp ' Not mining most profitable coin! ' $search_string >> $rootdir/cgmon.log;
         pid=`ps aux | grep -v 'grep' | grep -v -i 'screen' | grep ${types[0]} | awk '{print $2}'`;
         echo $pid
         kill $pid;
